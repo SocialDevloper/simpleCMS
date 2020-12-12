@@ -1,0 +1,5 @@
+<select multiple class="form-control" id="role" name="role[]">
+  @foreach($roles as $role)
+    <option value="{{ $role->id }}" {{in_array($role->id, old("role") ?: []) ? "selected": ""}}@if(isset($user)) {{ in_array($role->id, $user->roles->pluck('id')->toArray() ?: []) ? "selected": ""  }}@endif>{{ $role->name }}</option>
+  @endforeach
+</select>
